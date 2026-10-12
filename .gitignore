@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Internal source-path provenance; not part of the public portfolio
+docs/credential-register.json

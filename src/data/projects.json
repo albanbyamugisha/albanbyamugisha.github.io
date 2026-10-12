@@ -1,0 +1,75 @@
+[
+  {
+    "title": "IT Procurement Request System",
+    "label": "01 — ACADEMIC PROJECT",
+    "description": "A Java desktop application for individuals and organisations to request IT equipment and services, with staff handling review and fulfilment.",
+    "technologies": [
+      "Java",
+      "Swing",
+      "JDBC",
+      "MySQL / MariaDB"
+    ],
+    "repository": "https://github.com/albanbyamugisha/ITProcurementSystem",
+    "featured": true,
+    "highlights": [
+      {
+        "title": "Accounts & roles",
+        "description": "Requester, Purchaser, Manager and Admin screens for different responsibilities."
+      },
+      {
+        "title": "UGX catalogue",
+        "description": "Equipment and service items with fixed prices and customer order confirmation."
+      },
+      {
+        "title": "Fulfilment tracking",
+        "description": "Partial deliveries, equipment serial numbers, inventory and service progress."
+      },
+      {
+        "title": "Documents & reports",
+        "description": "Supporting request attachments and PDF exports for requests, accounts and history."
+      }
+    ],
+    "workflow": [
+      "Request",
+      "Confirm order",
+      "Approve supplier",
+      "Deliver / complete"
+    ]
+  },
+  {
+    "title": "Java Alarm Clock",
+    "label": "02 — PERSONAL PROJECT",
+    "description": "Console and desktop interfaces for setting alarms, with sound and real-time updates.",
+    "technologies": [],
+    "repository": "https://github.com/albanbyamugisha/Java-Alarm-Clock",
+    "featured": false
+  },
+  {
+    "title": "ALBAN TV",
+    "label": "03 — WEBSITE",
+    "description": "A React website introducing the channel and its programmes.",
+    "technologies": [],
+    "repository": "https://github.com/albanbyamugisha/alban-tv",
+    "featured": false
+  },
+  {
+    "title": "HTML5 Portfolio",
+    "label": "04 — ACADEMIC GROUP PROJECT",
+    "description": "A five-page group project exploring semantic HTML, accessibility, and web structure.",
+    "technologies": [],
+    "repository": "https://github.com/albanbyamugisha/Professional-Portfolio-HTML5",
+    "featured": false
+  },
+  {
+    "title": "Personal Media Library",
+    "label": "05 — PERSONAL PROJECT",
+    "description": "A local application for organizing photos and videos, with search, albums, and backup tools.",
+    "technologies": [
+      "Python",
+      "JavaScript",
+      "JSON"
+    ],
+    "repository": "",
+    "featured": false
+  }
+]

@@ -1,0 +1,10 @@
+import { z } from 'astro:content';
+import rawProfile from '../data/profile.json';
+import rawProjects from '../data/projects.json';
+import rawCredentials from '../data/credentials.json';
+const url = z.string().refine(v => !v || /^https:\/\//.test(v), 'Use an HTTPS URL');
+const local = z.string().refine(v => !v || (v.startsWith('/') && !v.startsWith('//') && !v.includes('..')), 'Use a site-relative asset path');
+export const profile = z.object({name:z.string().min(1),focus:z.string().min(1),location:z.string().min(1),tagline:z.string(),introduction:z.string().min(1),about:z.string(),values:z.string(),email:z.string().email(),description:z.string().min(1),cv:local,skills:z.array(z.string()),education:z.array(z.object({period:z.string(),qualification:z.string(),institution:z.string()})),socials:z.array(z.object({label:z.string(),url:z.string().refine(v=>/^https:\/\//.test(v)||/^tel:\+\d+$/.test(v),'Use HTTPS or tel') }))}).parse(rawProfile);
+export const projects = z.array(z.object({title:z.string().min(1),label:z.string(),description:z.string(),technologies:z.array(z.string()),repository:url,featured:z.boolean(),highlights:z.array(z.object({title:z.string(),description:z.string()})).default([]),workflow:z.array(z.string()).default([])})).parse(rawProjects);
+export const credentials = z.array(z.object({id:z.string().regex(/^[a-z0-9-]+$/),title:z.string().min(1),issuer:z.string().min(1),kind:z.enum(['course','participation','badge']),date:z.string().refine(v=>!v||/^\d{4}-\d{2}(-\d{2})?$/.test(v),'Use YYYY-MM or YYYY-MM-DD'),verificationUrl:url,document:local}).refine(v=>!!(v.verificationUrl||v.document),'A credential needs a link or document')).parse(rawCredentials);
+if(new Set(credentials.map(c=>c.id)).size!==credentials.length)throw new Error('Credential IDs must be unique');

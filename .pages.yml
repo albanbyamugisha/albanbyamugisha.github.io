@@ -1,0 +1,148 @@
+media:
+  input: public/uploads
+  output: /uploads
+content:
+- name: profile
+  label: Profile, contacts and education
+  type: file
+  path: src/data/profile.json
+  format: json
+  fields:
+  - name: name
+    type: string
+    required: true
+  - name: focus
+    type: string
+    required: true
+  - name: location
+    type: string
+    required: true
+  - name: tagline
+    type: string
+  - name: introduction
+    type: text
+    required: true
+  - name: about
+    type: text
+  - name: values
+    type: text
+  - name: email
+    type: string
+    required: true
+  - name: description
+    type: text
+    required: true
+  - name: cv
+    type: file
+  - name: skills
+    type: string
+    list: true
+  - name: education
+    type: object
+    list: true
+    fields:
+    - name: period
+      type: string
+    - name: qualification
+      type: string
+    - name: institution
+      type: string
+  - name: socials
+    type: object
+    list: true
+    fields:
+    - name: label
+      type: string
+    - name: url
+      type: string
+- name: credentials
+  label: Credentials
+  type: file
+  path: src/data/credentials.json
+  format: json
+  list: true
+  fields:
+  - name: id
+    type: string
+    required: true
+  - name: title
+    type: string
+    required: true
+  - name: issuer
+    type: string
+    required: true
+  - name: kind
+    type: select
+    options:
+      values:
+      - course
+      - participation
+      - badge
+  - name: date
+    type: string
+    description: 'Optional: YYYY-MM or YYYY-MM-DD. Leave unknown dates empty.'
+  - name: verificationUrl
+    type: string
+    label: Verification link
+  - name: document
+    type: file
+    label: Uploaded certificate
+- name: projects
+  label: Projects
+  type: file
+  path: src/data/projects.json
+  format: json
+  list: true
+  fields:
+  - name: title
+    type: string
+    required: true
+  - name: label
+    type: string
+  - name: description
+    type: text
+  - name: technologies
+    type: string
+    list: true
+  - name: repository
+    type: string
+  - name: featured
+    type: boolean
+  - name: highlights
+    label: Feature highlights
+    type: object
+    list: true
+    fields:
+    - name: title
+      type: string
+    - name: description
+      type: text
+  - name: workflow
+    label: Workflow steps
+    type: string
+    list: true
+- name: insights
+  label: Insights
+  type: collection
+  path: src/content/insights
+  format: yaml-frontmatter
+  filename: '{primary}.md'
+  view:
+    primary: title
+  fields:
+  - name: title
+    type: string
+    required: true
+  - name: description
+    type: text
+    required: true
+  - name: date
+    type: string
+    required: true
+    description: YYYY-MM-DD
+  - name: originalUrl
+    type: string
+  - name: draft
+    type: boolean
+  - name: body
+    type: rich-text

@@ -1,0 +1,13 @@
+{
+  "title": "Neural Systems",
+  "method": "Original procedural animation rendered with NumPy/Pillow and encoded with imageio-ffmpeg",
+  "resolution": [
+    1280,
+    720
+  ],
+  "durationSeconds": 8,
+  "fps": 24,
+  "audio": false,
+  "loop": "periodic 8-second cycle",
+  "visuals": "Nested architecture lattices, data traces, orbital neural nodes; blue/violet"
+}

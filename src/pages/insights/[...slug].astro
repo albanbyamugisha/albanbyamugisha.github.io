@@ -1,0 +1,9 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { profile } from '../../lib/data';
+export async function getStaticPaths(){return (await getCollection('insights',({data})=>!data.draft)).map(entry=>({params:{slug:entry.id},props:{entry}}));}
+const {entry}=Astro.props;
+const {Content}=await render(entry);
+---
+<Layout title={`${entry.data.title} · ${profile.name}`} description={entry.data.description} article><a class="skip" href="#article">Skip to article</a><header><div class="wrap simple-header"><a class="brand" href="/">{profile.name}<b>.</b></a><a href="/#insights">← Back to Insights</a></div></header><main class="wrap article-shell" id="article"><div class="eyebrow">Insights · Engineering &amp; AI</div><h1>{entry.data.title}</h1><div class="article-meta">{profile.name} · <time datetime={entry.data.date}>{new Date(entry.data.date+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time></div><div class="reading-links"><a href="/#contact">Discuss this article →</a>{entry.data.originalUrl&&<a href={entry.data.originalUrl} target="_blank" rel="noopener noreferrer">Read on LinkedIn ↗</a>}</div><Content /><p><a href="/#insights">← More from Insights</a></p></main></Layout>

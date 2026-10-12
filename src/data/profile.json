@@ -1,0 +1,86 @@
+{
+  "name": "Byamugisha Alban",
+  "focus": "Software Engineering Student · AI & Web Development",
+  "location": "Uganda",
+  "tagline": "Curiosity. Code. Possibility.",
+  "introduction": "I’m Byamugisha Alban, a Software Engineering student exploring the connections between thoughtful software, practical problem-solving, and AI.",
+  "about": "I’m studying Software Engineering at Mbarara University of Science and Technology. Through coursework, independent learning, and personal projects, I’m developing practical skills in programming, web development, databases, and AI.",
+  "values": "I value understanding the problem before choosing the tool—and staying curious about what comes next.",
+  "email": "albanbyamugisha@gmail.com",
+  "cv": "/documents/byamugisha-alban-cv.pdf",
+  "description": "Explore Byamugisha Alban’s professional portfolio: software projects, artificial intelligence, skills, credentials, and insights. Based in Uganda.",
+  "skills": [
+    "Java",
+    "Python",
+    "SQL",
+    "Web development",
+    "Git & GitHub",
+    "Generative AI",
+    "LLMs",
+    "Prompt engineering",
+    "MCP"
+  ],
+  "education": [
+    {
+      "period": "2025 — EXPECTED 2029",
+      "qualification": "B.Sc. Software Engineering",
+      "institution": "Mbarara University of Science and Technology"
+    },
+    {
+      "period": "2023 — 2024",
+      "qualification": "Uganda Advanced Certificate of Education",
+      "institution": "St. Balikudembe Secondary School, Kisoga"
+    },
+    {
+      "period": "2018 — 2022",
+      "qualification": "Uganda Certificate of Education",
+      "institution": "Mwizi Secondary School"
+    }
+  ],
+  "socials": [
+    {
+      "label": "WhatsApp",
+      "url": "https://wa.me/256748611252"
+    },
+    {
+      "label": "Call",
+      "url": "tel:+256769858515"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/albanbyamugisha"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/albanbyamugisha/"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@albanbyamugisha"
+    },
+    {
+      "label": "Telegram",
+      "url": "https://t.me/albanbyamugisha"
+    },
+    {
+      "label": "Discord",
+      "url": "https://discord.com/users/1412842818451275880"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/albanbyamugisha"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/albanbyamugisha"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/Byamugisha.Alban"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@albanbyamugisha"
+    }
+  ]
+}
