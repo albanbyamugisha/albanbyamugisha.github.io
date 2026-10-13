@@ -140,6 +140,14 @@ content:
     type: string
     required: true
     description: YYYY-MM-DD
+  - name: image
+    label: Cover image
+    type: image
+    description: Upload or select an image for the article.
+  - name: imageAlt
+    label: Image description
+    type: string
+    description: Describe the image for readers using screen readers.
   - name: originalUrl
     type: string
   - name: draft

@@ -46,3 +46,9 @@ New page structures, new content fields, navigation changes, theme redesigns, ef
 ## Latest owner clarification — 12 October 2026
 
 Omit uncertain dates. Credentials supplied only as external links do not need preview images; retain clickable View credential links. Uploaded certificates can have local previews. This clarification supersedes earlier requirements to obtain remote-only previews or clarify every date.
+
+## Insight cover images
+
+In Insights, use **Cover image** to upload or select an image. Files go into `public/uploads` and the editor stores `/uploads/filename` in the article’s `image` field. Enter a useful **Image description** for screen readers. Images are optional; existing articles still build without them. The selected cover appears above the body on the article page. The current homepage featured article remains separately styled. Save and wait for the GitHub Actions deployment to pass, then check the article URL.
+
+After CMS edits, run `git pull --rebase origin main` before making local changes so the local checkout includes the new articles and uploads.
