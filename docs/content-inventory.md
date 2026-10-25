@@ -26,8 +26,10 @@ CV source: `/home/alban-byamugisha/Public/albanbyamugisha/Alban_Byamugisha_CV.pd
 | Telegram | https://t.me/albanbyamugisha |
 | Discord | https://discord.com/users/1412842818451275880 |
 | X | https://x.com/albanbyamugisha |
+| Threads | https://threads.net/@albanbyamugisha |
 | Instagram | https://www.instagram.com/albanbyamugisha |
 | Facebook | https://www.facebook.com/Byamugisha.Alban |
+| TikTok | https://www.tiktok.com/@albanbyamugisha |
 
 Use the numeric Discord ID link rather than the supplied username-shaped URL. Do not swap the WhatsApp and calling numbers. Label icons with channel names. Contact links supplied by the owner are not all independently verified as working public pages.
 
