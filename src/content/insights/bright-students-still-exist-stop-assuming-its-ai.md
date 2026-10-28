@@ -9,7 +9,7 @@ image: /uploads/Hard Work Meets AI Suspicion.png
 imageAlt: Byamugisha Alban, the portfolio owner, studying at a library desk with
   books, a notebook and laptop, with visual elements representing hard work and
   AI scrutiny in education.
-originalUrl: https://lnkd.in/p/d5WiH78B
+originalUrl: https://www.linkedin.com/pulse/bright-students-still-exist-dont-assume-its-ai-byamugisha-alban-ycbkf/
 draft: false
 ---
 Every semester, countless university students sit for take-home tests, coursework, and projects. Most work hard, read widely, revise their work, and submit the best version of themselves.
