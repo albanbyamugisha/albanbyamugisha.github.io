@@ -87,6 +87,97 @@ content:
   - name: document
     type: file
     label: Uploaded certificate
+- name: experience
+  label: Experience
+  type: file
+  path: src/data/experience.json
+  format: json
+  fields:
+  - name: manual
+    label: Manual positions
+    type: object
+    list: true
+    fields:
+    - name: id
+      type: string
+      required: true
+      description: 'Unique, lowercase id (for example: role-slug).'
+    - name: linkedinId
+      type: string
+      description: Optional stable LinkedIn position ID for manual overrides.
+    - name: title
+      type: string
+      required: true
+    - name: company
+      type: string
+      required: true
+    - name: employmentType
+      type: string
+    - name: startDate
+      type: string
+      description: 'Optional: YYYY-MM or YYYY-MM-DD.'
+    - name: endDate
+      type: string
+      description: 'Optional: YYYY-MM or YYYY-MM-DD.'
+    - name: current
+      type: boolean
+    - name: location
+      type: string
+    - name: description
+      type: text
+    - name: skills
+      type: string
+      list: true
+    - name: logo
+      type: image
+      label: Organization logo
+    - name: logoAlt
+      type: string
+      label: Logo description
+    - name: url
+      type: string
+      label: Organization link
+  - name: overrides
+    label: LinkedIn position overrides
+    type: object
+    list: true
+    fields:
+    - name: linkedinId
+      type: string
+      required: true
+      description: Stable LinkedIn position ID from a future authorized sync.
+    - name: title
+      type: string
+      required: true
+    - name: company
+      type: string
+      required: true
+    - name: employmentType
+      type: string
+    - name: startDate
+      type: string
+      description: 'Optional: YYYY-MM or YYYY-MM-DD.'
+    - name: endDate
+      type: string
+      description: 'Optional: YYYY-MM or YYYY-MM-DD.'
+    - name: current
+      type: boolean
+    - name: location
+      type: string
+    - name: description
+      type: text
+    - name: skills
+      type: string
+      list: true
+    - name: logo
+      type: image
+      label: Organization logo
+    - name: logoAlt
+      type: string
+      label: Logo description
+    - name: url
+      type: string
+      label: Organization link
 - name: projects
   label: Projects
   type: file

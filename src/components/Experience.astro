@@ -1,0 +1,84 @@
+---
+import { experience, profile } from '../lib/data';
+
+const linkedinUrl = profile.socials.find((social) => social.label === 'LinkedIn')?.url;
+const formatDate = (date: string) => {
+  const isoDate = date.length === 7 ? `${date}-01` : date;
+  return new Date(`${isoDate}T00:00:00Z`).toLocaleDateString('en-GB', {
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+};
+---
+<section class="content section-soft" id="experience">
+  <div class="wrap">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">04 / Experience</div>
+        <h2>Work shaped by curiosity.</h2>
+      </div>
+      <p>Roles, contributions, and the people and communities I’ve worked with.</p>
+    </div>
+    {experience.length > 0 ? (
+      <div class="experience-list">
+        {experience.map((position) => (
+          <article class="experience-card">
+            {position.logo ? (
+              <div class="experience-logo">
+                <img
+                  src={position.logo}
+                  alt={position.logoAlt || `${position.company} logo`}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span aria-hidden="true">{position.company.slice(0, 1).toUpperCase()}</span>
+              </div>
+            ) : (
+              <div class="experience-logo experience-logo-fallback" aria-hidden="true">
+                {position.company.slice(0, 1).toUpperCase()}
+              </div>
+            )}
+            <div class="experience-detail">
+              <h3>{position.title}</h3>
+              <p class="experience-company">
+                {position.url ? (
+                  <a href={position.url} target="_blank" rel="noopener noreferrer">{position.company}<span class="sr-only"> (opens in a new tab)</span></a>
+                ) : position.company}
+                {position.employmentType && <span> · {position.employmentType}</span>}
+              </p>
+              {(position.startDate || position.endDate || position.current) && (
+                <p class="experience-dates">
+                  {position.startDate && <time datetime={position.startDate.length === 7 ? `${position.startDate}-01` : position.startDate}>{formatDate(position.startDate)}</time>}
+                  {position.startDate && (position.current || position.endDate) && <span aria-hidden="true"> – </span>}
+                  {position.current ? 'Present' : position.endDate && <time datetime={position.endDate.length === 7 ? `${position.endDate}-01` : position.endDate}>{formatDate(position.endDate)}</time>}
+                </p>
+              )}
+              {position.location && <p class="experience-location">{position.location}</p>}
+              {position.description && <p class="experience-description">{position.description}</p>}
+              {position.skills.length > 0 && (
+                <ul class="experience-skills" aria-label="Relevant skills">
+                  {position.skills.map((skill) => <li>{skill}</li>)}
+                </ul>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="experience-empty">
+        Experience entries can be added in Pages CMS.
+        {linkedinUrl && <> <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">Visit my LinkedIn profile ↗<span class="sr-only"> (opens in a new tab)</span></a></>}
+      </p>
+    )}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>('.experience-logo img').forEach((image) => {
+    image.addEventListener('error', () => {
+      image.hidden = true;
+      image.parentElement?.classList.add('experience-logo-fallback');
+    }, { once: true });
+  });
+</script>
