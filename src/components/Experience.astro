@@ -17,10 +17,11 @@ const formatDate = (date: string) => {
       <div>
         <div class="eyebrow">04 / Experience</div>
         <h2>Work shaped by curiosity.</h2>
+        {linkedinUrl && <p class="experience-profile-link"><a href={linkedinUrl} target="_blank" rel="noopener noreferrer">Visit my LinkedIn profile ↗<span class="sr-only"> (opens in a new tab)</span></a></p>}
       </div>
       <p>Roles, contributions, and the people and communities I’ve worked with.</p>
     </div>
-    {experience.length > 0 ? (
+    {experience.length > 0 && (
       <div class="experience-list">
         {experience.map((position) => (
           <article class="experience-card">
@@ -61,15 +62,16 @@ const formatDate = (date: string) => {
                   {position.skills.map((skill) => <li>{skill}</li>)}
                 </ul>
               )}
+              {(position.profileUrl || position.linkedinUrl) && (
+                <div class="experience-links">
+                  {position.profileUrl && <a href={position.profileUrl} target="_blank" rel="noopener noreferrer">Organization profile ↗<span class="sr-only"> (opens in a new tab)</span></a>}
+                  {position.linkedinUrl && <a href={position.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn ↗<span class="sr-only"> (opens in a new tab)</span></a>}
+                </div>
+              )}
             </div>
           </article>
         ))}
       </div>
-    ) : (
-      <p class="experience-empty">
-        Experience entries can be added in Pages CMS.
-        {linkedinUrl && <> <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">Visit my LinkedIn profile ↗<span class="sr-only"> (opens in a new tab)</span></a></>}
-      </p>
     )}
   </div>
 </section>

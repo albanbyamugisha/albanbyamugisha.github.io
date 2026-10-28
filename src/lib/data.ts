@@ -27,7 +27,10 @@ const experienceFields = {
   skills:z.array(z.string()).optional(),
   logo:local.optional(),
   logoAlt:z.string().optional(),
-  url:url.optional()
+  url:url.optional(),
+  profileUrl:url.optional(),
+  linkedinUrl:url.optional(),
+  matchKey:z.string().optional()
 };
 const experiencePosition = z.object({id:z.string().min(1),linkedinId:z.string().optional(),...experienceFields,current:z.boolean().default(false),skills:z.array(z.string()).default([])});
 const manualExperience = z.object({
@@ -39,18 +42,39 @@ const linkedInExperience = z.object({
   entries:z.array(experiencePosition.extend({linkedinId:z.string().min(1)}))
 }).parse(rawLinkedInExperience);
 const manualLinkedInEntries = manualExperience.manual.filter((entry)=>entry.linkedinId);
-const standaloneManualEntries = manualExperience.manual.filter((entry)=>!entry.linkedinId).map((entry)=>({...entry,current:entry.current??false,skills:entry.skills??[]}));
 const manualOverrides = [...manualLinkedInEntries,...manualExperience.overrides];
 const overridesByLinkedInId = new Map(manualOverrides.map((entry) => [entry.linkedinId!, entry]));
 if(overridesByLinkedInId.size!==manualOverrides.length)throw new Error('Experience LinkedIn override IDs must be unique');
 const linkedInIds = linkedInExperience.entries.map((entry) => entry.linkedinId);
 if(new Set(linkedInIds).size!==linkedInIds.length)throw new Error('LinkedIn experience IDs must be unique');
+const normaliseExperienceIdentity = (value:string) => value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const sameExperience = (
+  first:{title:string;company:string;startDate?:string;linkedinId?:string;matchKey?:string},
+  second:{title:string;company:string;startDate?:string;linkedinId?:string;matchKey?:string}
+) => {
+  if(first.linkedinId&&second.linkedinId)return first.linkedinId===second.linkedinId;
+  if(first.matchKey&&second.matchKey)return normaliseExperienceIdentity(first.matchKey)===normaliseExperienceIdentity(second.matchKey);
+  return normaliseExperienceIdentity(first.title)===normaliseExperienceIdentity(second.title)
+    && normaliseExperienceIdentity(first.company)===normaliseExperienceIdentity(second.company)
+    && (!first.startDate||!second.startDate||first.startDate===second.startDate);
+};
+const manualEntries = manualExperience.manual.filter((entry)=>!entry.linkedinId);
+const matchedManualEntries = new Set<typeof manualEntries[number]>();
 const linkedInEntries = linkedInExperience.entries.map((entry) => {
   const override = overridesByLinkedInId.get(entry.linkedinId);
-  if(!override)return entry;
+  const matchingManual = manualEntries.find((manual) => !matchedManualEntries.has(manual) && sameExperience(manual,entry));
+  if(matchingManual)matchedManualEntries.add(matchingManual);
+  if(!override&&!matchingManual)return entry;
   overridesByLinkedInId.delete(entry.linkedinId);
-  return {...entry,...Object.fromEntries(Object.entries(override).filter(([,value])=>typeof value==='boolean'||(Array.isArray(value))||(typeof value==='string'&&value.length>0)))};
+  const manualValues = matchingManual ?? {};
+  const overrideValues = override ?? {};
+  const merged = {...entry,...Object.fromEntries(
+    Object.entries({...manualValues,...overrideValues}).filter(([,value])=>typeof value==='boolean'||(Array.isArray(value))||(typeof value==='string'&&value.length>0))
+  )};
+  if(matchingManual)merged.id=matchingManual.id;
+  return merged;
 });
 const unmatchedOverrides = [...overridesByLinkedInId.values()].map((entry)=>({...entry,id:'id' in entry?entry.id:`linkedin-${entry.linkedinId}`,current:entry.current??false,skills:entry.skills??[]}));
-export const experience = [...standaloneManualEntries,...linkedInEntries,...unmatchedOverrides];
+const unimportedManualEntries = manualExperience.manual.filter((entry)=>!entry.linkedinId&&!matchedManualEntries.has(entry)).map((entry)=>({...entry,current:entry.current??false,skills:entry.skills??[]}));
+export const experience = [...unimportedManualEntries,...linkedInEntries,...unmatchedOverrides];
 if(new Set(experience.map((entry)=>entry.id)).size!==experience.length)throw new Error('Experience IDs must be unique');

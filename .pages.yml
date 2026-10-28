@@ -102,6 +102,9 @@ content:
       type: string
       required: true
       description: 'Unique, lowercase id (for example: role-slug).'
+    - name: matchKey
+      type: string
+      description: Optional stable key for matching this role to a LinkedIn import.
     - name: linkedinId
       type: string
       description: Optional stable LinkedIn position ID for manual overrides.
@@ -136,7 +139,13 @@ content:
       label: Logo description
     - name: url
       type: string
-      label: Organization link
+      label: Company website
+    - name: profileUrl
+      type: string
+      label: Organization profile URL
+    - name: linkedinUrl
+      type: string
+      label: LinkedIn profile or position URL
   - name: overrides
     label: LinkedIn position overrides
     type: object
@@ -177,7 +186,13 @@ content:
       label: Logo description
     - name: url
       type: string
-      label: Organization link
+      label: Company website
+    - name: profileUrl
+      type: string
+      label: Organization profile URL
+    - name: linkedinUrl
+      type: string
+      label: LinkedIn profile or position URL
 - name: projects
   label: Projects
   type: file

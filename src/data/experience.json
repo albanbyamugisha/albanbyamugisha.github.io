@@ -1,4 +1,23 @@
 {
-  "manual": [],
+  "manual": [
+    {
+      "id": "icsc-ambassador-uganda",
+      "matchKey": "icsc-ambassador-uganda",
+      "title": "ICSC Ambassador – Uganda",
+      "company": "International Computer Science Competition",
+      "employmentType": "Ambassador",
+      "startDate": "2026-10",
+      "current": true,
+      "location": "Mbarara, Uganda",
+      "description": "🇺🇬 Serving as an ICSC Ambassador for Uganda, promoting computer science education and inspiring students to explore technology and AI. Encourage student participation in the International Computer Science Competition. Support computer science outreach and student engagement.",
+      "skills": [
+        "Computer Science",
+        "Community Outreach"
+      ],
+      "url": "https://icscompetition.org/",
+      "profileUrl": "https://icscompetition.org/balban",
+      "linkedinUrl": "https://www.linkedin.com/in/albanbyamugisha/"
+    }
+  ],
   "overrides": []
 }
