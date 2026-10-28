@@ -4,7 +4,7 @@ description: An opinion piece on AI detection, academic integrity, and the
   growing risk of mistaking academic excellence for AI-generated work. The
   article argues for fairer assessment practices that protect honest students
   while still addressing genuine AI misuse.
-date: 2026-10-28
+date: "2026-10-28"
 image: /uploads/Hard Work Meets AI Suspicion.png
 imageAlt: Byamugisha Alban, the portfolio owner, studying at a library desk with
   books, a notebook and laptop, with visual elements representing hard work and
