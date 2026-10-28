@@ -100,4 +100,4 @@ The least our institutions can do is give them a fair chance to prove it.
 
 Has your work ever been questioned for being too good? Share your experience in the comments.
 
-Byamugisha Alban BSc Software Engineering.
+Byamugisha Alban - BSc Software Engineering.
