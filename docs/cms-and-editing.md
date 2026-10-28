@@ -31,6 +31,16 @@ Edit the project record, preserve an existing slug unless intentionally changing
 
 Create an entry with an independent id, exact certificate title, issuer, kind, and a known date or an empty date. Add the verificationUrl when supplied; upload the original PDF/image into the document field for local viewing. Uploaded documents open directly in the browser; link-only entries do not need preview images. Check name/title/date against the document. Use a distinct identifier for separate credentials even if source documents have conflicting printed IDs. Keep all entries in the same public grid.
 
+## LinkedIn and credential sources
+
+The Credentials section currently has one source: Pages CMS edits `src/data/credentials.json`, Astro validates it in `src/lib/data.ts`, and `src/components/Credentials.astro` renders it. Profile education is separate and is edited in `src/data/profile.json`. The site and deployment workflow do not currently call LinkedIn; no LinkedIn credentials or sync secrets are required for builds. Keep using Pages CMS as the source of truth until an approved API integration is available.
+
+LinkedIn's self-service **Sign In with LinkedIn using OpenID Connect** product uses the `openid` and `profile` scopes, with `email` optional. It can provide basic authenticated-member identity/profile claims such as a LinkedIn member identifier, name, profile picture, and locale; email claims are optional. These scopes do not provide the portfolio's course certificates, issuers, award dates, verification links, or uploaded documents, and do not provide the education and experience records needed to replace the manually maintained content. Keep those fields in Pages CMS unless LinkedIn grants access to a specific official API that returns them.
+
+Before implementing a sync, first enable a LinkedIn Developer app and obtain explicit access to the official API product and permissions that expose the particular fields to import. The OpenID Connect product alone is insufficient for credentials, education, or experience. The app must also have a registered OAuth redirect URI and member-authorized OAuth consent. Only after LinkedIn confirms the applicable product, scopes, and access should a server-side/GitHub Actions sync be designed. Any client secret and OAuth tokens must be GitHub Actions secrets, never site code or public content. A future merge must retain CMS-edited values as overrides and must leave the current CMS-only build working when LinkedIn is unavailable.
+
+Official references: [Sign In with LinkedIn using OpenID Connect](https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2), [Getting Access to LinkedIn APIs](https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access), and [Profile API](https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api).
+
 ## Profile and CV update
 
 Use the Profile editor for introduction, location, contacts, skills, languages, and education. Replace the public CV file intentionally, preserve its public URL where practical, and check Download CV. Certificate uploads and CV updates should never expose unrelated files from the local Downloads folder.
